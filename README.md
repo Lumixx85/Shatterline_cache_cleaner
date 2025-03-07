@@ -1,4 +1,4 @@
-// Full credit goes to https://github.com/Liub0myr/Shatterline_cache_cleaner. I only addedIntel GPU support.
+// Full credit goes to https://github.com/Liub0myr/Shatterline_cache_cleaner. I only added Intel GPU support.
 
 # Shatterline_cache_cleaner
 A script for clearing the game cache. This can help fix persistent crashes and freezes
