@@ -19,22 +19,23 @@ goto game_check_loop
 
 :: Game cache
 if exist "%userprofile%\Saved Games\Shatterline\LIVER7211G8K6M\user\cache" (
-	echo Removind game cache...
+	echo Removing game cache...
 	rd /s /q "%userprofile%\Saved Games\Shatterline\LIVER7211G8K6M\user\cache"
 	if not %errorlevel%==0 (
-		echo Failed to delete game cache :^(
+		echo Failed to delete game cache :^( 
 	) else echo Game cache was removed
 ) else (
 	echo Game cache not found
 )
 echo.
+
 :: Graphics cache
 for %%g in (AMD;NVIDIA) do (
 	if exist "%localappdata%\%%g\DxCache\*a15f919d5ab57a19*" (
-		echo Removind %%g graphics cache...
+		echo Removing %%g graphics cache...
 		del /q "%localappdata%\%%g\DxCache\*a15f919d5ab57a19*" > nul
 		if exist "%localappdata%\%%g\DxCache\*a15f919d5ab57a19*" (
-			echo Failed to delete %%g cache :^(
+			echo Failed to delete %%g cache :^( 
 		) else echo %%g graphics cache was removed
 	) else (
 		echo %%g graphics cache not found
@@ -44,13 +45,25 @@ for %%g in (AMD;NVIDIA) do (
 
 :: New NVIDIA's graphics cache location
 if exist "%localappdata%\..\LocalLow\NVIDIA\PerDriverVersion\DxCache\*a15f919d5ab57a19*" (
-	echo Removind NVIDIA graphics cache in new location...
+	echo Removing NVIDIA graphics cache in new location...
 	del /q "%localappdata%\..\LocalLow\NVIDIA\PerDriverVersion\DxCache\*a15f919d5ab57a19*" > nul
 	if exist "%localappdata%\..\LocalLow\NVIDIA\PerDriverVersion\DxCache\*a15f919d5ab57a19*" (
-		echo Failed to delete NVIDIA graphics cache in new location cache :^(
+		echo Failed to delete NVIDIA graphics cache in new location :^( 
 	) else echo NVIDIA graphics cache in new location was removed
 ) else (
-	echo NVIDIA Graphics cache in new location not found
+	echo NVIDIA graphics cache in new location not found
+)
+echo.
+
+:: Intel graphics cache
+if exist "%localappdata%\..\LocalLow\Intel\ShaderCache" (
+	echo Removing Intel graphics cache...
+	rd /s /q "%localappdata%\..\LocalLow\Intel\ShaderCache"
+	if exist "%localappdata%\..\LocalLow\Intel\ShaderCache" (
+		echo Failed to delete Intel graphics cache :^( 
+	) else echo Intel graphics cache was removed
+) else (
+	echo Intel graphics cache not found
 )
 echo.
 
